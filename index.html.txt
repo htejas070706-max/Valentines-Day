@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Will You Be My Valentine Scoobie ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+
+            /* Cinematic Blue Gradient */
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        h1 {
+            margin-top: 150px;
+            font-size: 36px;
+            padding: 0 20px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.4);
+        }
+
+        .buttons {
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 14px 30px;
+            font-size: 20px;
+            margin: 15px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        #yesBtn {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.7);
+        }
+
+        #noBtn {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 0, 100, 0.8);
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>WILL YOU BE MY VALENTINE SCOOBIE ❤️</h1>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="sayYes()">YES ❤️</button>
+        <button id="noBtn" onclick="handleNo()">NO 💔</button>
+    </div>
+
+    <script>
+        let noTexts = [
+            "Are you sure? 🥺",
+            "Think again 😭",
+            "You sure sure? 👀",
+            "I'll bring chocolate 🍫",
+            "I'll plan surprise date 💙",
+            "Last chance 😤"
+        ];
+
+        let index = 0;
+        let yesSize = 20;
+
+        function handleNo() {
+            let noBtn = document.getElementById("noBtn");
+            let yesBtn = document.getElementById("yesBtn");
+
+            if (index < noTexts.length) {
+                noBtn.innerText = noTexts[index];
+                index++;
+            } else {
+                noBtn.style.display = "none";
+            }
+
+            yesSize += 10;
+            yesBtn.style.fontSize = yesSize + "px";
+        }
+
+        function sayYes() {
+            document.body.innerHTML = `
+                <h1 style="margin-top:200px; font-size:42px; text-shadow:0 0 30px #00c6ff;">
+                SHE SAID YES 💙😭<br><br>
+                I LOVE YOU SCOOBIE ❤️
+                </h1>
+            `;
+            setInterval(createHeart, 150);
+        }
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "💙";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 25 + 15 + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 400);
+    </script>
+
+</body>
+</html>
